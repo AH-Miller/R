@@ -28,10 +28,10 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
     data <- read.csv(file)
     
     if (pollutant == "sulfate") {
-      measurements <- c(measurements, data$"sulfate")
+      measurements <- c(measurements, data$sulfate)
     }
     else if (pollutant == "nitrate") {
-      measurements <- c(measurements, data$"nitrate")
+      measurements <- c(measurements, data$nitrate)
     }
   }
   mean(measurements, na.rm = TRUE)    
