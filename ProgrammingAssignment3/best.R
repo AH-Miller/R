@@ -13,14 +13,15 @@ best <- function(state, outcome) {
   
   ## Return hospital name in that state with lowest 30-day death rate
   state_data <- data[data[,7] == state,]
+  state_data <- state_data[order(state_data[, 2]), ]
   if (outcome == 'pneumonia') {
-    min_idx <- suppressWarnings(which.min(state_data[, 11]))
+    min_idx <- suppressWarnings(which.min(state_data[, 23]))
   }
   else if (outcome == 'heart attack') {
-    min_idx <- suppressWarnings(which.min(state_data[, 17]))
+    min_idx <- suppressWarnings(which.min(state_data[, 11]))
   }
   else {
-    min_idx <- suppressWarnings(which.min(state_data[, 23]))
+    min_idx <- suppressWarnings(which.min(state_data[, 17]))
   }
   
   state_data[min_idx, 2]
