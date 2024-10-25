@@ -2,7 +2,7 @@ rankall <- function(outcome, num = "best") {
   ## Read outcome data
   data <- read.csv("outcome-of-care-measures.csv",
                    colClasses = "character")
-  states <- sort(unique(data[,7]))
+  state <- sort(unique(data[,7]))
   
   ## Check that outcome is valid
   if(!(outcome %in% c("pneumonia", "heart attack", "heart failure"))) {
@@ -11,12 +11,12 @@ rankall <- function(outcome, num = "best") {
   
   ## For each state, find the hospital of the given rank
   hospital <- c()
-  for (s in states) {
+  for (s in state) {
     hospital <- c(hospital, getRankHospital(data[data[,7] == s,], outcome, num))
   }
   ## Return a data frame with the hospital names and the (abbreviated) state
   ## name
-  data.frame(hospital, states, row.names = states)
+  data.frame(hospital, state, row.names = state)
 }
 
 getRankHospital <- function(state_data, outcome, num) {
